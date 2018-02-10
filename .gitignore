@@ -1,7 +1,10 @@
 # These files are ignored by git
 
-ise147pn/mega65-ddr/working/
-ise147pn/mega65-ddr/iseconfig/
+# temporary remove until it is working
+#ise147pn/mega65-ddr/working/
+#ise147pn/mega65-ddr/iseconfig/
+#ise147pn/mega65-nonddr/working/
+#ise147pn/mega65-nonddr/iseconfig/
 
 # object files
 *.o

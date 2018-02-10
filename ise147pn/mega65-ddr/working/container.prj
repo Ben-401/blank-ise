@@ -1,0 +1,6 @@
+vhdl work "../../../src/vhdl/vgasettings.vhdl"
+vhdl work "../../../src/vhdl/tilerom.vhdl"
+vhdl work "../../../src/vhdl/clksettings.vhdl"
+vhdl work "../../../src/vhdl/vgagen.vhdl"
+vhdl work "../../../src/vhdl/clkgen.vhdl"
+vhdl work "../../../src/vhdl/container.vhdl"
