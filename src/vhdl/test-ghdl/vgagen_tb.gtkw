@@ -1,0 +1,63 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Thu Dec 21 09:47:24 2017
+[*]
+[dumpfile] "/home/gerb0002/dev/github/blank-ise/src/vhdl/test-ghdl/vgagen_tb.vcd"
+[dumpfile_mtime] "Thu Dec 21 09:46:11 2017"
+[dumpfile_size] 3570780
+[savefile] "/home/gerb0002/dev/github/blank-ise/src/vhdl/test-ghdl/vgagen_tb.gtkw"
+[timestart] 0
+[size] 1855 1176
+[pos] -1 -549
+*-28.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 225
+[signals_width] 253
+[sst_expanded] 1
+[sst_vpaned_height] 362
+@28
+clk
+disp_en
+reset
+@22
+vgab[3:0]
+vgag[3:0]
+vgar[3:0]
+@28
+vichsync
+vicvsync
+@22
+xpix[9:0]
+ypix[9:0]
+@200
+-
+@28
+uut1vgagen.disp_en
+uut1vgagen.disp_ena_reg0
+@22
+uut1vgagen.h_count_reg0[9:0]
+uut1vgagen.h_count_reg1[9:0]
+@28
+uut1vgagen.h_sync_reg0
+uut1vgagen.hsync
+uut1vgagen.reset_l
+uut1vgagen.reset_s
+uut1vgagen.sysclk
+@22
+uut1vgagen.v_count_reg0[9:0]
+uut1vgagen.v_count_reg1[9:0]
+@28
+uut1vgagen.v_sync_reg0
+@22
+uut1vgagen.vgab_reg0[3:0]
+uut1vgagen.vgablue[3:0]
+uut1vgagen.vgag_reg0[3:0]
+uut1vgagen.vgagreen[3:0]
+uut1vgagen.vgar_reg0[3:0]
+uut1vgagen.vgared[3:0]
+@28
+uut1vgagen.vsync
+@22
+uut1vgagen.xpix[9:0]
+uut1vgagen.ypix[9:0]
+[pattern_trace] 1
+[pattern_trace] 0

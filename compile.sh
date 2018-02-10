@@ -160,7 +160,8 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile1 | grep ERROR
   exit 1
 else
-  cat $outfile1 | grep WARN
+  cat $outfile1 | egrep 'WARN|Note:'
+  cat $outfile1 | egrep -A 1000 -B 1 'Design Summary'
 fi
 
 
@@ -176,7 +177,7 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile2 | grep ERROR
   exit 1
 else
-  cat $outfile2 | grep WARN
+  cat $outfile2 | egrep  'WARN|Note:'
 fi
 
 #
@@ -191,7 +192,7 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile3 | grep ERROR
   exit 1
 else
-  cat $outfile3 | grep WARN
+  cat $outfile3 | egrep  'WARN|Note:'
 fi
 
 #
@@ -206,7 +207,7 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile4 | grep ERROR
   exit 1
 else
-  cat $outfile4 | grep WARN
+  cat $outfile4 | egrep  'WARN|Note:'
 fi
 
 #
@@ -221,7 +222,7 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile5 | grep ERROR
   exit 1
 else
-  cat $outfile5 | grep WARN
+  cat $outfile5 | egrep  'WARN|Note:'
 fi
 
 #
@@ -236,7 +237,7 @@ if [ $retcode -ne 0 ] ; then
   cat $outfile6 | grep ERROR
   exit 1
 else
-  cat $outfile6 | grep WARN
+  cat $outfile6 | egrep  'WARN|Note:'
 fi
 
 
