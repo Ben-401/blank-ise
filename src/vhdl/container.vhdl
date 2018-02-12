@@ -121,11 +121,13 @@ architecture behavioral of container is
 
   -- other
   signal button : std_logic_vector(1 downto 0) := (others => '0');
-  signal counter : std_logic_vector(17 downto 0) := (others => '0');
-  signal pwmset : std_logic_vector(17 downto 0) := (others => '0');
+  constant PWMBITS : integer := 18;
+  signal pwmcnt : std_logic_vector(PWMBITS-1 downto 0) := (others => '0');
+  signal pwmset : std_logic_vector(PWMBITS-1 downto 0) := (others => '0');
   signal pwmout : std_logic;
 
   signal devnull : std_logic;
+  signal vgadevnull : std_logic;
 
 begin
 
@@ -197,12 +199,12 @@ begin
 
   -- generate a clock-divider
   process (CLK0int, CLK0mrst_l_out) is
-    variable count_var : integer range 0 to (2**17)-1 := 0;
-    variable pwm_var   : integer range 0 to (2**17)-1 := 0;
+    variable count_var : integer range 0 to (2**PWMBITS)-1 := 0;
+    variable pwm_var   : integer range 0 to (2**PWMBITS)-1 := 0;
   begin
     if CLK0mrst_l_out = '1' then -- reset clause, wait for MMCM to lock
       count_var := 0;
-      pwm_var   := 2**14;
+      pwm_var   := 2**PWMBITS-2; -- initialise to about 50%
     elsif rising_edge(CLK0int) then
     
       count_var := count_var + 1;
@@ -221,10 +223,7 @@ begin
         pwmout <= '0';
       end if;
 
-      counter <= std_logic_vector(to_unsigned(count_var,17+1));
-      
-      
-      
+      pwmcnt <= std_logic_vector(to_unsigned(count_var,PWMBITS));
       
     end if;
   end process;
@@ -243,7 +242,8 @@ begin
     ypix => ypix,
     vgared   => vgar_int,
     vgagreen => vgag_int,
-    vgablue  => vgab_int
+    vgablue  => vgab_int,
+    devnull => vgadevnull
   );
   
   -- vga outputs
@@ -278,9 +278,9 @@ begin
   pmodjb10 <= disp_en_int;--de/yellow
   
   pmodjc01 <= pwmout;
-  pmodjc02 <= counter(15);
-  pmodjc03 <= counter(16);
-  pmodjc04 <= counter(17);
+  pmodjc02 <= '0';
+  pmodjc03 <= '0';
+  pmodjc04 <= '0';
   pmodjc07 <= '0';
   pmodjc08 <= '0';
   pmodjc09 <= '0';
@@ -291,10 +291,21 @@ begin
                  xpix(0) or xpix(1) or xpix(2) or xpix(3) or
                  xpix(4) or xpix(5) or xpix(6) or xpix(7) or
                  xpix(8) or xpix(9) or xpix(10) or
+                 
                  ypix(0) or ypix(1) or ypix(2) or ypix(3) or
                  ypix(4) or ypix(5) or ypix(6) or ypix(7) or
                  ypix(8) or ypix(9) or
-                 counter(0) or counter(1) or counter(2) or
+                 
+                 -- surely we can do the PWM another way without having this
+                 -- internal counter not accepted as purely internal logic.
+                 pwmcnt(0)  or pwmcnt(1)  or pwmcnt(2)  or pwmcnt(3) or
+                 pwmcnt(4)  or pwmcnt(5)  or pwmcnt(6)  or pwmcnt(7) or
+                 pwmcnt(8)  or pwmcnt(9)  or pwmcnt(10) or pwmcnt(11) or
+                 pwmcnt(12) or pwmcnt(13) or pwmcnt(14) or pwmcnt(15) or
+                 pwmcnt(16) or pwmcnt(17) or
+                 
+                 vgadevnull or
+                 
                  CLK0mrst_s_out;
 
 end Behavioral;

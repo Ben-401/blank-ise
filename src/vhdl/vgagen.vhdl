@@ -38,7 +38,9 @@ entity vgagen is
 
     vgared   : out  std_logic_vector(3 downto 0);
     vgagreen : out  std_logic_vector(3 downto 0);
-    vgablue  : out  std_logic_vector(3 downto 0)
+    vgablue  : out  std_logic_vector(3 downto 0);
+    
+    devnull : out std_logic
     );
 end vgagen;
 
@@ -371,8 +373,14 @@ begin
   END PROCESS;
 
 -- ####### ####### ####### #######
+  devnull <= 
+      framecounter(0) or framecounter(1) or framecounter(2) or framecounter(3) or 
+      framecounter(4) or                    framecounter(6) or framecounter(7) or
+      framecounter(8) or
 
- 
+      tileromdata_reg2(4) or tileromdata_reg2(5) or
+      tileromdata_reg2(6) or tileromdata_reg2(7);
+
   
 end Behavioral;
 
