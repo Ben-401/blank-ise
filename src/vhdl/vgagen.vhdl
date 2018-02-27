@@ -239,10 +239,14 @@ begin
 -- pipeline stage-2 (reads/uses stage-1)
 
   tilerom0: entity work.tilerom
+  -- is actually a RAM, but we tie to "we" and "di" low
+  -- to make the ROM
   port map (
     clk          => sysclk,
     addr(7 downto 4) => v_count_reg1(3 downto 0),
     addr(3 downto 0) => h_count_reg1(3 downto 0),
+    di => "00000000",
+    we => '0',
     do => tileromdata_reg2
   );
   
@@ -297,7 +301,7 @@ begin
           -- source color data from the rom
           vgar_reg3 <= tileromdata_reg2(3 downto 0);
           vgag_reg3 <= tileromdata_reg2(3 downto 0);
-          vgab_reg3 <= tileromdata_reg2(3 downto 0);
+          vgab_reg3 <= tileromdata_reg2(7 downto 4);
         else
           -- generate rainbow colors
           vgar_reg3 <= h_count_reg2(3 downto 0);
