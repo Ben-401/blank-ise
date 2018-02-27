@@ -70,6 +70,15 @@ entity container is
     pmodjc08 : out std_logic;
     pmodjc09 : out std_logic;
     pmodjc10 : out std_logic;
+
+    pmodjd01 : out std_logic;
+    pmodjd02 : out std_logic;
+    pmodjd03 : out std_logic;
+    pmodjd04 : out std_logic;
+    pmodjd07 : out std_logic;
+    pmodjd08 : out std_logic;
+    pmodjd09 : out std_logic;
+    pmodjd10 : out std_logic;
     
     btn : in std_logic_vector(1 downto 0)
   );
@@ -258,33 +267,42 @@ begin
   lcdg <= vgag_int;--"0000";
   lcdb <= vgab_int;--"1111";
 
-  pmodja01 <= lcdb(0);--'0';--b4
-  pmodja02 <= lcdb(1);--'0';--b5
-  pmodja03 <= lcdb(2);--'0';--b6
-  pmodja04 <= lcdb(3);--'0';--b7
+  pmodjc01 <= lcdb(0);--'0';--b4
+  pmodjc02 <= lcdb(1);--'0';--b5
+  pmodjc03 <= lcdb(2);--'0';--b6
+  pmodjc04 <= lcdb(3);--'0';--b7
 
-  pmodja07 <= lcdr(0);--'0';--r4
-  pmodja08 <= lcdr(1);--'0';--r5
-  pmodja09 <= lcdr(2);--'0';--r6
-  pmodja10 <= lcdr(3);--'0';--r7
+  pmodjc07 <= lcdr(0);--'0';--r4
+  pmodjc08 <= lcdr(1);--'0';--r5
+  pmodjc09 <= lcdr(2);--'0';--r6
+  pmodjc10 <= lcdr(3);--'0';--r7
 
-  pmodjb01 <= lcdg(0);--'0';--g4
-  pmodjb02 <= lcdg(1);--'0';--g5
-  pmodjb03 <= lcdg(2);--'0';--g6
-  pmodjb04 <= lcdg(3);--'0';--g7
-  pmodjb07 <= CLK0int;--lcdclk/white
-  pmodjb08 <= hsync_int;--hs/purple
-  pmodjb09 <= vsync_int;--vs/blue
-  pmodjb10 <= disp_en_int;--de/yellow
+  pmodjd01 <= lcdg(0);--'0';--g4
+  pmodjd02 <= lcdg(1);--'0';--g5
+  pmodjd03 <= lcdg(2);--'0';--g6
+  pmodjd04 <= lcdg(3);--'0';--g7
+  pmodjd07 <= CLK0int;--lcdclk/white
+  pmodjd08 <= hsync_int;--hs/purple
+  pmodjd09 <= vsync_int;--vs/blue
+  pmodjd10 <= disp_en_int;--de/yellow
   
-  pmodjc01 <= pwmout;
-  pmodjc02 <= '0';
-  pmodjc03 <= '0';
-  pmodjc04 <= '0';
-  pmodjc07 <= '0';
-  pmodjc08 <= '0';
-  pmodjc09 <= '0';
-  pmodjc10 <= devnull;
+  pmodja01 <= pwmout;
+  pmodja02 <= '0';
+  pmodja03 <= '0';
+  pmodja04 <= '0';
+  pmodja07 <= '0';
+  pmodja08 <= '0';
+  pmodja09 <= '0';
+  pmodja10 <= devnull;
+
+  pmodjb01 <= pwmout;
+  pmodjb02 <= '0';
+  pmodjb03 <= '0';
+  pmodjb04 <= '0';
+  pmodjb07 <= '0';
+  pmodjb08 <= '0';
+  pmodjb09 <= '0';
+  pmodjb10 <= devnull;
 
   -- used to remove warnings due to unconnected outputs
   devnull <=
