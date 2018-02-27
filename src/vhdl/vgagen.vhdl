@@ -103,7 +103,8 @@ architecture behavioral of vgagen is
   
 
 -- timing constants
-  constant hperiod : real := real(h_period) / real(33333333) * real(1000) * real(1000);
+  constant clkfreq : integer := 33333333;
+  constant hperiod : real := real(h_period) / real(clkfreq) * real(1000) * real(1000);
   constant hfreq   : real := real(1000) / real(hperiod);
   constant vperiod : real := real(hperiod) * real(525) / real(1000);
   constant vfreq   : real := real(1000) / real(vperiod);
@@ -112,6 +113,7 @@ architecture behavioral of vgagen is
 begin
 -- ####### ####### ####### #######
 
+  assert false report "clkfreq= " & integer'IMAGE(clkfreq) & " *check*" severity note;
   assert false report "h_pulse=" & integer'IMAGE(h_pulse) severity note;
   assert false report "h_bp="    & integer'IMAGE(h_bp)    severity note;
   assert false report "h_fp="    & integer'IMAGE(h_fp)    severity note;
