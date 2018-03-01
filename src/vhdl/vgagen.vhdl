@@ -102,11 +102,11 @@ architecture behavioral of vgagen is
 
   
 
--- timing constants
+-- timing constants             MMTTTHTU
   constant clkfreq : integer := 33333333;
   constant hperiod : real := real(h_period) / real(clkfreq) * real(1000) * real(1000);
   constant hfreq   : real := real(1000) / real(hperiod);
-  constant vperiod : real := real(hperiod) * real(525) / real(1000);
+  constant vperiod : real := real(hperiod) * real(v_period) / real(1000);
   constant vfreq   : real := real(1000) / real(vperiod);
 
 -- ####### ####### ####### #######

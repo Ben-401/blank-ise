@@ -28,19 +28,19 @@ package vgasettings is
 --  constant  v_fp     :  INTEGER   :=    1;     --vertical front porch width in rows
 --  constant  v_pol    :  STD_LOGIC := '1';  --vertical sync pulse polarity (1 = positive, 0 = negative)
 
-  -- 800x600 @ 60hz (40mhz = 100, 1, 8.0, 20) CONFD for VGA
+  -- 800x(600-120) @ 50hz -> works on VGA-Monitor and LCD-Screen
   constant  h_pulse  :  INTEGER   :=  128; --horiztonal sync pulse width in pixels
   constant  h_bp     :  INTEGER   :=   88;   --horiztonal back porch width in pixels
   constant  h_pixels :  INTEGER   :=  800;  --horiztonal display width in pixels
   constant  h_fp     :  INTEGER   :=   40;   --horiztonal front porch width in pixels
   constant  h_pol    :  STD_LOGIC :=  '1';   --horizontal sync pulse polarity (1 = positive, 0 = negative)
   constant  v_pulse  :  INTEGER   :=    4;     --vertical sync pulse width in rows
-  constant  v_bp     :  INTEGER   :=   84;    --vertical back porch width in rows
-  constant  v_pixels :  INTEGER   :=  480;  --vertical display width in rows
-  constant  v_fp     :  INTEGER   :=   61;     --vertical front porch width in rows
+  constant  v_bp     :  INTEGER   :=   23+60+1;   --vertical back porch width in rows
+  constant  v_pixels :  INTEGER   :=  600-120;  --vertical display width in rows
+  constant  v_fp     :  INTEGER   :=    1+60;     --vertical front porch width in rows
   constant  v_pol    :  STD_LOGIC :=  '1';  --vertical sync pulse polarity (1 = positive, 0 = negative)
 
-  -- 640x480 @ 60hz (25.175mhz = 100, 4,  25.175, 25.0) CONFD for VGA
+  -- 640x480 @ 60hz (25.175mhz = 100, 4,  25.175, 25.0) CONFD for VGA, LCD does not like
 --  constant  h_pulse  :  INTEGER   :=  96; --horiztonal sync pulse width in pixels
 --  constant  h_bp     :  INTEGER   :=  48;   --horiztonal back porch width in pixels
 --  constant  h_pixels :  INTEGER   := 640;  --horiztonal display width in pixels
